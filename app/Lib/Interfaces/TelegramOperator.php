@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Lib\Interfaces;
-abstract class TelegramOprator extends TelegramVarables
+abstract class TelegramOperator
 {
-    public $user, $update,$class_status;
+    public $user,$update,$class_status,$telegram;
 
-    public function __construct($update)
+    public function __construct($update,TelegramVariables $telegram)
     {
-        parent::__construct($update);
+        $this->update = $update;
+        $this->telegram = $telegram;
         if ($this->initCheck()) {
             $this->handel();
             $this->class_status =  true;
